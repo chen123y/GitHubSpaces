@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration SYSTEM "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<!-- 别名  ，，setting重要设置 -->
+ 	
+ 	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<!-- 开启延迟加载 -->
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<setting name="aggressiveLazyLoading" value="false"/>
+	</settings>
+  <typeAliases>
+  	<package name="com.buba.bean"/>
+  </typeAliases>
+  <plugins>
+		<!-- com.github.pagehelper为PageHelper类所在包名 -->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- 使用下面的方式配置参数，后面会有所有的参数介绍 -->
+			<property name="reasonable" value="true"/>
+		</plugin>
+	</plugins>
+  
+</configuration>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.buba.dao.EmpMapper">
+	<!-- 	//分页查询列表
+	List<Emp> query(Integer dId, String eLevel, Integer eSex, String queryEmpName, Integer wages); -->
+	<select id="query" resultType="emp">
+		select e_emp.*,d_pei.d_name as dName
+		from e_emp,d_pei
+		where e_emp.d_id=d_pei.d_id	
+		<if test="dId!=null and dId!=''">
+			and d_pei.d_id=#{dId}
+		</if>
+		<if test="eLevel!=null and eLevel!=''">
+			and e_emp.e_level=#{eLevel}
+		</if>
+		<if test="eSex!=null and eSex!=''">
+			and e_emp.e_sex=#{eSex}
+		</if>
+		<if test="queryEmpName!=null and queryEmpName!=''">
+			and e_emp.e_name like '%${queryEmpName}%'
+		</if>
+		<if test="wages==1">
+			order by e_emp.e_wages asc
+		</if>
+		<if test="wages==2">
+			order by e_emp.e_wages desc
+		</if>
+	</select>
+	
+	<!-- 	//查询所有地区
+	List<Location> queryLocation(); -->
+	<select id="queryLocation" resultType="location">
+		select * from d_pei
+	</select>
+	
+	<!-- 	//查询所有等级
+	List<Emp> queryLevel(); -->
+	<select id="queryLevel" resultType="emp">
+		select distinct(e_emp.e_level) from e_emp
+	</select>
+</mapper>
