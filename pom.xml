@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
-   <!--properties 里面可以自定义标签 将其中的版本号规定在自定义标签中 -->
+   <!--properties 里面可以自定义标签 将其中的版本号规定在自定义标签中 写的不好自己去改 -->
 	<properties>
 		<spring.version>4.3.12.RELEASE</spring.version>
 		<mybatis.version>3.4.1</mybatis.version>
